@@ -1,0 +1,5 @@
+"class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        nums.sort(reverse=True)
+        # Return the k-th largest element (k is 1-based index, so we subtract 1)
+        return nums[k-1]"
