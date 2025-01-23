@@ -1,0 +1,27 @@
+"class Solution:
+    def repeatedNumber(self, A):
+        n = len(A)
+
+        # Calculate the sum and sum of squares for numbers 1 to n
+        total_sum = n * (n + 1) // 2
+        total_sum_of_squares = n * (n + 1) * (2 * n + 1) // 6
+
+        # Calculate the actual sum and sum of squares from the array
+        actual_sum = sum(A)
+        actual_sum_of_squares = sum(x * x for x in A)
+
+        # Differences between expected and actual
+        diff_sum = total_sum - actual_sum  # B - A
+        diff_sum_of_squares = total_sum_of_squares - actual_sum_of_squares  # B^2 - A^2
+
+        # Solving the equations:
+        # diff_sum = B - A
+        # diff_sum_of_squares = B^2 - A^2 = (B - A)(B + A)
+        # (B + A) = diff_sum_of_squares / diff_sum
+
+        sum_A_B = diff_sum_of_squares // diff_sum  # B + A
+        A = (sum_A_B - diff_sum) // 2
+        B = (sum_A_B + diff_sum) // 2
+
+        return [A, B]
+"
